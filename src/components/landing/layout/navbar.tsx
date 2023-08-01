@@ -18,11 +18,11 @@ function Navbar() {
             <div className="flex-shrink-0">
               <a href="/">
               <Image
-                className="h-12 w-12"
+                className="h-12 w-40"
                 src={logo.image}
                 alt="PackPushers"
-                width={250}
-                height={250}
+                width={500}
+                height={500}
               />
               </a>
             </div>
