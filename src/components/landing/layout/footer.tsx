@@ -15,14 +15,14 @@ function Footer() {
 			<a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
 				<div className="flex items-center justify-center w-12 h-12 rounded-full bg-violet-400">
                 <Image
-                className="h-12 w-12"
+                className="h-12 w-40"
                 src={logo.image}
                 alt="PackPushers"
-                width={250}
-                height={250}
+                width={500}
+                height={500}
               />
 				</div>
-				<span className="self-center text-2xl font-semibold">PackPushers</span>
+				{/* <span className="self-center text-2xl font-semibold">PackPushers</span> */}
 			</a>
 		</div>
 		<div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
