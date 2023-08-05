@@ -11,15 +11,15 @@ import {
 } from "@/components/ui/tabs"
 import { Sidebar } from "../../../components/sidebar"
 import { playlists } from "../../../data/playlists"
-import TeamSwitcher from "@/components/dashboard/components/team-switcher"
-import { MainNav } from "@/components/dashboard/components/main-nav"
-import { Search } from "@/components/dashboard/components/search"
-import { UserNav } from "@/components/dashboard/components/user-nav"
-import { CalendarDateRangePicker } from "@/components/dashboard/components/date-range-picker"
+import TeamSwitcher from "@/components/admin/components/team-switcher"
+import { MainNav } from "@/components/admin/components/main-nav"
+import { Search } from "@/components/admin/components/search"
+import { UserNav } from "@/components/admin/components/user-nav"
+import { CalendarDateRangePicker } from "@/components/admin/components/date-range-picker"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Overview } from "@/components/dashboard/components/overview"
-import { RecentSales } from "@/components/dashboard/components/recent-sales"
-import { DashboardTable } from "@/components/dashboard/components/dashboardTable"
+import { Overview } from "@/components/admin/components/overview"
+import { RecentSales } from "@/components/admin/components/recent-sales"
+import { DashboardTable } from "@/components/admin/components/dashboardTable"
 // import "../../components/dashboard/components/dashboardStyle.css"
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   description: "Track your packges",
 }
 
-export default function MusicPage() {
+export default function UserDashb() {
   return (
     <>
       <div className="md:hidden">
@@ -69,8 +69,7 @@ export default function MusicPage() {
             <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
             <div className="flex items-center justify-between space-x-2 mb-4">
               
-              <CalendarDateRangePicker />
-              <Button>Download</Button>
+             
             </div>
           
             <Tabs defaultValue="overview" className="space-y-4">
