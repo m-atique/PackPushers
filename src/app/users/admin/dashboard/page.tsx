@@ -9,8 +9,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-// import { Sidebar } from "../../../components/sidebar"
-// import { playlists } from "../../../data/playlists"
 import TeamSwitcher from "@/components/admin/components/team-switcher"
 import { MainNav } from "@/components/admin/components/main-nav"
 import { Search } from "@/components/admin/components/search"
@@ -20,8 +18,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Overview } from "@/components/admin/components/overview"
 import { RecentSales } from "@/components/admin/components/recent-sales"
 import { DashboardTable } from "@/components/admin/components/dashboardTable"
-import { Sidebar } from "@/components/sidebar"
-import { playlists } from "@/data/playlists"
+import DashboardLayout from "../../dashboardLayout"
 // import "../../components/dashboard/components/dashboardStyle.css"
 
 export const metadata: Metadata = {
@@ -29,9 +26,11 @@ export const metadata: Metadata = {
   description: "Track your packges",
 }
 
-export default function MusicPage() {
+export default function Dashboard() {
   return (
-    <>
+     
+            <>
+             <DashboardLayout>
       <div className="md:hidden">
         <Image
           src="/examples/music-light.png"
@@ -49,7 +48,7 @@ export default function MusicPage() {
         />
       </div>
       <div className="hidden md:block">
-        <div className="border-b">
+        {/* <div className="border-b">
           <div className="flex h-16 items-center px-4">
             <TeamSwitcher />
             <MainNav className="mx-6" />
@@ -58,23 +57,17 @@ export default function MusicPage() {
               <UserNav />
             </div>
           </div>
-        </div>
+        </div> */}
         
-        <div className="grid grid-cols-5 gap-4">
+        <div className="hidden md:flex">
           {/* Sidebar */}
           <div className="col-span-1">
-            <Sidebar />
+            {/* <Sidebar /> */}
           </div>
 
-          {/* Main Content */}
+          {/* Main Content  flex-1 space-y-4 p-8 pt-6 */}
           <div className="col-span-4 p-8 pt-6">
-            <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-            {/* <div className="flex items-center justify-between space-x-2 mb-4">
-              
-              <CalendarDateRangePicker />
-              <Button>Download</Button>
-            </div> */}
-          
+            <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>          
             <Tabs defaultValue="overview" className="space-y-4">
              
               <TabsContent value="overview" className="space-y-4">
@@ -176,6 +169,8 @@ export default function MusicPage() {
         </div>
        
       </div>
+      </DashboardLayout>
+
     </>
   )
 }

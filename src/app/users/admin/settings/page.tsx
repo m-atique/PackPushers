@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
+import DashboardLayout from "../../dashboardLayout"
 
 const profileFormSchema = z.object({
   username: z
@@ -86,7 +87,8 @@ function ProfileSettings() {
   }
 
   return (
-    <Form {...form}>
+    <DashboardLayout>
+          <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
@@ -187,6 +189,7 @@ function ProfileSettings() {
         <Button type="submit">Update profile</Button>
       </form>
     </Form>
+    </DashboardLayout>
   )
 }
 
