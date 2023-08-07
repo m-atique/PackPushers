@@ -71,12 +71,6 @@ function Navbar() {
                     >
                         Start Tracking
                     </a>
-                    {/* <a
-                        href="javascript:void(0)"
-                        className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
-                    >
-                        Start Tracking
-                    </a> */}
                 </div>
 
                 {settings.themeToggleEnabled && (
@@ -203,7 +197,6 @@ function Navbar() {
         </Transition>
       </nav>
 
-      {/* ... Rest of the component ... */}
     </div>
   );
 }

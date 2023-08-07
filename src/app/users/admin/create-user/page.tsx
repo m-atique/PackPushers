@@ -33,15 +33,31 @@ const profileFormSchema = z.object({
     .string()
     .min(2, {
       message: "Username must be at least 2 characters.",
-    })
-    .max(30, {
-      message: "Username must not be longer than 30 characters.",
     }),
+
+    name: z
+    .string()
+    .min(2, {
+      message: "name must be at least 2 characters.",
+    }),
+
+    role: z
+    .string()
+    .min(2, {
+      message: "role must be at least 2 characters.",
+    })
+
+    .max(30, {
+      message: "name must not be longer than 30 characters.",
+    }),
+
   email: z
     .string({
       required_error: "Please select an email to display.",
     })
     .email(),
+
+
   bio: z.string().max(160).min(4),
   urls: z
     .array(
@@ -87,17 +103,20 @@ function ProfileSettings() {
   }
 
   return (
+    
     <DashboardLayout isDashboardPage={true}>
-          <Form {...form}>
+       <div className="col-span-4 p-8 pt-6">
+            <h2 className="text-3xl font-bold tracking-tight">Create User</h2>    
+     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
-          name="username"
+          name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Davide Mark" {...field} />
               </FormControl>
               <FormDescription>
                 This is your public display name. It can be your real name or a
@@ -107,26 +126,45 @@ function ProfileSettings() {
             </FormItem>
           )}
         />
-        <FormField
+
+    <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>email</FormLabel>
+              <FormControl>
+                <Input placeholder="david@mail.com" {...field} />
+              </FormControl>
+              <FormDescription>
+                This is your public display name. It can be your real name or a
+                pseudonym. You can only change this once every 30 days.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="role"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>role</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a verified email to display" />
+                    <SelectValue placeholder="Select a verified role to display" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="m@example.com">m@example.com</SelectItem>
-                  <SelectItem value="m@google.com">m@google.com</SelectItem>
-                  <SelectItem value="m@support.com">m@support.com</SelectItem>
+                  <SelectItem value="admin">Admin</SelectItem>
+                  <SelectItem value="agent">Agent</SelectItem>
+                  <SelectItem value="user">User</SelectItem>
                 </SelectContent>
               </Select>
               <FormDescription>
-                You can manage verified email addresses in your{" "}
+                You can manage verified role addresses in your{" "}
                 <Link href="/examples/forms">email settings</Link>.
               </FormDescription>
               <FormMessage />
@@ -147,48 +185,19 @@ function ProfileSettings() {
                 />
               </FormControl>
               <FormDescription>
-                You can <span>@mention</span> other users and organizations to
-                link to them.
+                Enter your description
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
         <div>
-          {fields.map((field, index) => (
-            <FormField
-              control={form.control}
-              key={field.id}
-              name={`urls.${index}.value`}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className={cn(index !== 0 && "sr-only")}>
-                    URLs
-                  </FormLabel>
-                  <FormDescription className={cn(index !== 0 && "sr-only")}>
-                    Add links to your website, blog, or social media profiles.
-                  </FormDescription>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          ))}
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            className="mt-2"
-            onClick={() => append({ value: "" })}
-          >
-            Add URL
-          </Button>
+         
         </div>
-        <Button type="submit">Update profile</Button>
+        <Button type="submit">Create New User</Button>
       </form>
     </Form>
+    </div>
     </DashboardLayout>
   )
 }

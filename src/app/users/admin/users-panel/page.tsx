@@ -1,12 +1,12 @@
 import { Metadata } from "next"
 import Image from "next/image"
-
 import {
   Tabs,
   TabsContent,
- 
 } from "@/components/ui/tabs"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import DashboardLayout from "../../dashboardLayout"
 import { Overview } from "@/components/users/components/overview"
 import { RecentSales } from "@/components/users/components/recent-sales"
 import { DashboardTable } from "@/components/users/components/dashboardTable"
@@ -16,37 +16,15 @@ export const metadata: Metadata = {
   description: "Track your packges",
 }
 
-export default function UserDashb() {
+export default function UserPanel() {
   return (
-    <>
-      <div className="md:hidden">
-        <Image
-          src="/examples/music-light.png"
-          width={1280}
-          height={1114}
-          alt="Music"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/music-dark.png"
-          width={1280}
-          height={1114}
-          alt="Music"
-          className="hidden dark:block"
-        />
-      </div>
-      <div className="hidden md:block">
-        
-        <div className="grid grid-cols-5 gap-4">
+     
+  <>
+    <DashboardLayout isDashboardPage={true}>  
 
-          {/* Main Content */}
+          {/* Main Content  flex-1 space-y-4 p-8 pt-6 */}
           <div className="col-span-4 p-8 pt-6">
-            <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-            <div className="flex items-center justify-between space-x-2 mb-4">
-              
-             
-            </div>
-          
+            <h2 className="text-3xl font-bold tracking-tight">Users Panel</h2>          
             <Tabs defaultValue="overview" className="space-y-4">
              
               <TabsContent value="overview" className="space-y-4">
@@ -55,12 +33,12 @@ export default function UserDashb() {
                   <Card>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                       <CardTitle className="text-sm font-medium">
-                        Total Revenue
+                        Total Admin
                       </CardTitle>
                       {/* SVG Icon */}
                     </CardHeader>
                     <CardContent>
-                      <div className="text-2xl font-bold">$45,231.89</div>
+                      <div className="text-2xl font-bold">105</div>
                       <p className="text-xs text-muted-foreground">
                         +20.1% from last month
                       </p>
@@ -70,14 +48,14 @@ export default function UserDashb() {
                   <Card>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                       <CardTitle className="text-sm font-medium">
-                        Subscriptions
+                        Total Agents
                       </CardTitle>
                       {/* SVG Icon */}
                     </CardHeader>
                     <CardContent>
-                      <div className="text-2xl font-bold">+2350</div>
+                      <div className="text-2xl font-bold">2350</div>
                       <p className="text-xs text-muted-foreground">
-                        +180.1% from last month
+                        +180 added from last month
                       </p>
                     </CardContent>
                   </Card>
@@ -86,14 +64,14 @@ export default function UserDashb() {
                     <Card>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                       <CardTitle className="text-sm font-medium">
-                        Subscriptions
+                        Total Customers
                       </CardTitle>
                       {/* SVG Icon */}
                     </CardHeader>
                     <CardContent>
                       <div className="text-2xl font-bold">+2350</div>
                       <p className="text-xs text-muted-foreground">
-                        +180.1% from last month
+                        1900 from last six month
                       </p>
                     </CardContent>
                   </Card>
@@ -115,39 +93,15 @@ export default function UserDashb() {
                   </Card>
                   {/* More Card Components go here */}
                 </div>
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-                  {/* Card Component 3 */}
-                  <Card className="col-span-4">
-                    <CardHeader>
-                      <CardTitle>Package Sale Graph</CardTitle>
-                    </CardHeader>
-                    <CardContent className="pl-2">
-                      <Overview />
-                    </CardContent>
-                  </Card>
-                  {/* Card Component 4 */}
-                  <Card className="col-span-3">
-                    <CardHeader>
-                      <CardTitle>Recent Sales</CardTitle>
-                      <CardDescription>
-                        You made 265 sales this month.
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <RecentSales />
-                    </CardContent>
-                  </Card>
-                  {/* More Card Components go here */}
-                </div>
+               
               </TabsContent>
             </Tabs>
 
             <DashboardTable/>
           </div>
-          
-        </div>
-       
-      </div>
+               
+      </DashboardLayout>
+
     </>
   )
 }

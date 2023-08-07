@@ -1,8 +1,6 @@
 import "./globals.css"
 import { siteConfig } from "@/config/site"
 import { Inter } from "next/font/google"
-// import Footer from "@/components/layout/footer"
-// import { ThemeProvider } from "@/components/theme-provider"
 import { settings } from "@/config/settings"
 import Navbar from "@/components/landing/layout/navbar"
 import { ThemeProvider } from "@/components/landing/theme-provider"
@@ -57,10 +55,11 @@ export const metadata = {
 }
 
 interface RootLayoutProps {
-  children: React.ReactNode
+  children: React.ReactNode;
+  isDashboardPage?: boolean; // Change to optional
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children, isDashboardPage }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -68,19 +67,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         {settings.themeToggleEnabled ? (
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {/* <Navbar /> */}
-            <Navbar/>
+            {isDashboardPage && <Navbar />} {/* Render Navbar only for dashboard */}
             {children}
-            {/* <Footer /> */}
           </ThemeProvider>
         ) : (
           <ThemeProvider attribute="class" forcedTheme="light" enableSystem>
-            <Navbar />
             {children}
-            {/* <Footer /> */}
           </ThemeProvider>
         )}
       </body>
     </html>
-  )
+  );
 }

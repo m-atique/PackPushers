@@ -1,25 +1,15 @@
 import { Metadata } from "next"
 import Image from "next/image"
-// import { PlusCircledIcon } from "@radix-ui/react-icons"
-import { Button } from "@/components/ui/button"
-// import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import {
   Tabs,
   TabsContent,
-  TabsList,
-  TabsTrigger,
 } from "@/components/ui/tabs"
-import TeamSwitcher from "@/components/admin/components/team-switcher"
-import { MainNav } from "@/components/admin/components/main-nav"
-import { Search } from "@/components/admin/components/search"
-import { UserNav } from "@/components/admin/components/user-nav"
-import { CalendarDateRangePicker } from "@/components/admin/components/date-range-picker"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Overview } from "@/components/admin/components/overview"
-import { RecentSales } from "@/components/admin/components/recent-sales"
-import { DashboardTable } from "@/components/admin/components/dashboardTable"
 import DashboardLayout from "../../dashboardLayout"
-// import "../../components/dashboard/components/dashboardStyle.css"
+import { Overview } from "@/components/users/components/overview"
+import { RecentSales } from "@/components/users/components/recent-sales"
+import { DashboardTable } from "@/components/users/components/dashboardTable"
 
 export const metadata: Metadata = {
   title: "PackPushers",
@@ -29,41 +19,8 @@ export const metadata: Metadata = {
 export default function Dashboard() {
   return (
      
-            <>
-             <DashboardLayout>
-      <div className="md:hidden">
-        <Image
-          src="/examples/music-light.png"
-          width={1280}
-          height={1114}
-          alt="Music"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/music-dark.png"
-          width={1280}
-          height={1114}
-          alt="Music"
-          className="hidden dark:block"
-        />
-      </div>
-      <div className="hidden md:block">
-        {/* <div className="border-b">
-          <div className="flex h-16 items-center px-4">
-            <TeamSwitcher />
-            <MainNav className="mx-6" />
-            <div className="ml-auto flex items-center space-x-4">
-              <Search />
-              <UserNav />
-            </div>
-          </div>
-        </div> */}
-        
-        <div className="hidden md:flex">
-          {/* Sidebar */}
-          <div className="col-span-1">
-            {/* <Sidebar /> */}
-          </div>
+  <>
+    <DashboardLayout isDashboardPage={true}>  
 
           {/* Main Content  flex-1 space-y-4 p-8 pt-6 */}
           <div className="col-span-4 p-8 pt-6">
@@ -165,10 +122,7 @@ export default function Dashboard() {
 
             <DashboardTable/>
           </div>
-          
-        </div>
-       
-      </div>
+               
       </DashboardLayout>
 
     </>
