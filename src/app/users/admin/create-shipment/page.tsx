@@ -528,6 +528,8 @@ export default function ShipmentSettings() {
                 )}
               />
               </div>
+              
+              <Button type="submit">Create Shipment</Button>
           </form>
         </Form>
       </div>
