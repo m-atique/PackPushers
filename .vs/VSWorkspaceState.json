@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\users",
+    "\\src\\app\\users\\admin"
   ],
-  "SelectedNode": "\\C:\\Users\\HASSAN HUNDAL\\Source\\Repos\\PackPushers",
+  "SelectedNode": "\\src\\app\\users\\admin\\create-user",
   "PreviewInSolutionExplorer": false
 }
