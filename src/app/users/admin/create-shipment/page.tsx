@@ -528,8 +528,9 @@ export default function ShipmentSettings() {
                 )}
               />
               </div>
-              
+              <div className="flex justify-end pr-10">
               <Button type="submit">Create Shipment</Button>
+              </div>
           </form>
         </Form>
       </div>
