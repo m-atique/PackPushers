@@ -5,6 +5,7 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { UserAuthForm } from "@/app/users/register/user-auth-form"
 import Footer from "@/components/landing/layout/footer"
+import Navbar from "@/components/landing/layout/navbar"
 
 export const metadata: Metadata = {
   title: "Authentication",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function AuthenticationPage() {
   return (
     <>
+    <Navbar/>
       <div className="container h-[800px] md:grid md:place-items-center">
        
         <div className="lg:p-8">
