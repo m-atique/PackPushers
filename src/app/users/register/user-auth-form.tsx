@@ -3,26 +3,49 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-// import { Icons } from "@/components/icons"
 
+import axios from 'axios';
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Circle, GithubIcon, Mail } from "lucide-react"
+import { Circle, Mail } from "lucide-react"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [formData, setFormData] = React.useState({
+    fullName: '',
+    email: '',
+    password: '',
+  });
+
 
   async function onSubmit(event: React.SyntheticEvent) {
-    event.preventDefault()
-    setIsLoading(true)
+    event.preventDefault();
+    setIsLoading(true);
 
     setTimeout(() => {
       setIsLoading(false)
     }, 3000)
+
+    try {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/signup`, formData);
+      console.log(response.data); // Handle the response as needed
+    } catch (error) {
+      console.error(error);
+    }
+
+    setIsLoading(false);
   }
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
@@ -33,12 +56,13 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               Name
             </Label>
             <Input
-              id="name"
+              id="fullName"
               placeholder="John Doe"
-              type="name"
+              type="fullName"
               autoCapitalize="none"
-              autoComplete="name"
+              autoComplete="fullName"
               autoCorrect="off"
+              onChange={handleInputChange}
               disabled={isLoading}
             />
           </div>
@@ -54,6 +78,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
+              onChange={handleInputChange}
               disabled={isLoading}
             />
           </div>
@@ -69,6 +94,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               autoCapitalize="none"
               autoComplete="password"
               autoCorrect="off"
+              onChange={handleInputChange}
               disabled={isLoading}
             />
           </div>
