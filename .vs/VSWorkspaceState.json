@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\users",
+    "\\src\\app\\users\\admin"
+  ],
+  "SelectedNode": "\\src\\app\\users\\admin\\create-user",
+  "PreviewInSolutionExplorer": false
+}
