@@ -40,6 +40,8 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
+import {ScrollArea,ScrollBar} from '@/components/ui/scroll-area'
+
 const data: Payment[] = [
   {
     id: "m5gr84i9",
@@ -242,7 +244,7 @@ export function DashboardTable() {
   })
 
   return (
-    <div className="w-full">
+    <div className="w-ful">
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter emails..."
@@ -279,6 +281,9 @@ export function DashboardTable() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+      <ScrollArea className="w-4/5 " >
+        <ScrollBar orientation={"horizontal"}>
+        
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -329,6 +334,8 @@ export function DashboardTable() {
           </TableBody>
         </Table>
       </div>
+      </ScrollBar>
+        </ScrollArea>
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
