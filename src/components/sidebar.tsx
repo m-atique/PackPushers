@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Contact, DollarSign, Globe, List, Plus, Settings, ShipIcon, User, UsersIcon } from "lucide-react"
 import { DashboardIcon } from "@radix-ui/react-icons"
 
+
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 

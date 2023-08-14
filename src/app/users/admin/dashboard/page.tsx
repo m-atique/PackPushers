@@ -28,75 +28,78 @@ export default function Dashboard() {
             <Tabs defaultValue="overview" className="space-y-4">
              
               <TabsContent value="overview" className="space-y-4">
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                
+                <div className="grid gap-2  grid-cols-2 md:gap-5  sm:grid-cols-2 md:grid-cols-4">
                   {/* Card Component 1 */}
-                  <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                      <CardTitle className="text-sm font-medium">
+                  <Card className="h-fit sm:h-full">
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
+                      <CardTitle className="text-sm font-medium w-full">
                         Total Revenue
                       </CardTitle>
                       {/* SVG Icon */}
                     </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">$45,231.89</div>
-                      <p className="text-xs text-muted-foreground">
+                    <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
+                      <div className=" text-md  sm:text-2xl font-bold">$45,231.89</div>
+                      <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
                         +20.1% from last month
                       </p>
                     </CardContent>
                   </Card>
                   {/* Card Component 2 */}
-                  <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                      <CardTitle className="text-sm font-medium">
-                        Subscriptions
+                  <Card className="h-fit sm:h-full">
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
+                      <CardTitle className="text-sm font-medium w-full">
+                        Subscriptions 01
                       </CardTitle>
                       {/* SVG Icon */}
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">+2350</div>
-                      <p className="text-xs text-muted-foreground">
-                        +180.1% from last month
+                      </CardHeader>
+                    <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
+                      <div className=" text-md  sm:text-2xl font-bold">+465,70</div>
+                      <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
+                        480.1% from last month
                       </p>
                     </CardContent>
                   </Card>
 
                     {/* Card Component 3 */}
-                    <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                      <CardTitle className="text-sm font-medium">
-                        Subscriptions
+                    <Card className="h-fit sm:h-full">
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
+                      <CardTitle className="text-sm font-medium w-full">
+                        Subscription 2
                       </CardTitle>
                       {/* SVG Icon */}
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">+2350</div>
-                      <p className="text-xs text-muted-foreground">
+                      </CardHeader>
+                    <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
+                      <div className=" text-md  sm:text-2xl font-bold">+45,567</div>
+                      <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
                         +180.1% from last month
                       </p>
                     </CardContent>
                   </Card>
 
                     {/* Card Component 4 */}
-                    <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                      <CardTitle className="text-sm font-medium">
-                        Subscriptions
+                    <Card className="h-fit sm:h-full">
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
+                      <CardTitle className="text-sm font-medium w-full">
+                        Subscription 3
                       </CardTitle>
                       {/* SVG Icon */}
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">+2350</div>
-                      <p className="text-xs text-muted-foreground">
-                        +180.1% from last month
+                      </CardHeader>
+                    <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
+                      <div className=" text-md  sm:text-2xl font-bold">+75,231</div>
+                      <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
+                        +150.1% from last month
                       </p>
                     </CardContent>
                   </Card>
                   {/* More Card Components go here */}
                 </div>
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+
+                {/* =========  Graphs ==========  */}
+                <div className="grid md:grid-cols-2 gap-4">
                   {/* Card Component 3 */}
-                  <Card className="col-span-4">
-                    <CardHeader>
+                  <Card className="md:col-span-4">
+                  <CardHeader className="w-4/5">
                       <CardTitle>Package Sale Graph</CardTitle>
                     </CardHeader>
                     <CardContent className="pl-2">
@@ -104,8 +107,8 @@ export default function Dashboard() {
                     </CardContent>
                   </Card>
                   {/* Card Component 4 */}
-                  <Card className="col-span-3">
-                    <CardHeader>
+                  <Card className="w-full md:col-span-3">
+                    <CardHeader className="w-4/5">
                       <CardTitle>Recent Sales</CardTitle>
                       <CardDescription>
                         You made 265 sales this month.
@@ -120,7 +123,7 @@ export default function Dashboard() {
               </TabsContent>
             </Tabs>
 
-            <DashboardTable/>
+            {/* <DashboardTable/> */}
           </div>
                
       </DashboardLayout>
