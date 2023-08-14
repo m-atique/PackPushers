@@ -244,20 +244,20 @@ export function DashboardTable() {
   })
 
   return (
-    <div className="w-ful">
-      <div className="flex items-center py-4">
+    <div className="grid grid-flow-row col-span-11  p-4">
+      <div className="flex items-center py-4 px-2 ">
         <Input
           placeholder="Filter emails..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className=" w-4/6 sm:max-w-sm"
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
-              Columns <ChevronDownIcon className="ml-2 h-4 w-4" />
+              Columns <ChevronDownIcon className="ml-2 h-4 w-3" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -281,10 +281,10 @@ export function DashboardTable() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <ScrollArea className="w-4/5 " >
-        <ScrollBar orientation={"horizontal"}>
+      <ScrollArea className="w-auto " >
+       
         
-      <div className="rounded-md border">
+      <div className="rounded-md border w-full">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -334,10 +334,10 @@ export function DashboardTable() {
           </TableBody>
         </Table>
       </div>
-      </ScrollBar>
+      <ScrollBar orientation="horizontal" />
         </ScrollArea>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="flex-1 text-sm text-muted-foreground">
+      <div className="flex items-center justify-end space-x-2 py-4 ">
+        <div className="flex-1 w-auto text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>

@@ -1,3 +1,4 @@
+
 import { Metadata } from "next"
 import Image from "next/image"
 import {
@@ -10,6 +11,8 @@ import DashboardLayout from "../../dashboardLayout"
 import { Overview } from "@/components/users/components/overview"
 import { RecentSales } from "@/components/users/components/recent-sales"
 import { DashboardTable } from "@/components/users/components/dashboardTable"
+import { ScrollBar,ScrollArea } from "@/components/ui/scroll-area"
+// import * as ScrollArea from '@radix-ui/react-scroll-area';
 
 export const metadata: Metadata = {
   title: "PackPushers",
@@ -23,13 +26,14 @@ export default function Dashboard() {
     <DashboardLayout isDashboardPage={true}>  
 
           {/* Main Content  flex-1 space-y-4 p-8 pt-6 */}
-          <div className="col-span-4 p-8 pt-6">
-            <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>          
+                 
+          <div className="col-span-4  pt-6">
+                    
             <Tabs defaultValue="overview" className="space-y-4">
              
               <TabsContent value="overview" className="space-y-4">
                 
-                <div className="grid gap-2  grid-cols-2 md:gap-5  sm:grid-cols-2 md:grid-cols-4">
+                <div className="grid gap-3 grid-cols-2 md:gap-5  sm:grid-cols-2 md:grid-cols-4 p-6 ">
                   {/* Card Component 1 */}
                   <Card className="h-fit sm:h-full">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
@@ -96,7 +100,7 @@ export default function Dashboard() {
                 </div>
 
                 {/* =========  Graphs ==========  */}
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid  col-span-1 sm:col-span-4 md:grid-cols-7 lg:col-span-7 gap-2  p-4">
                   {/* Card Component 3 */}
                   <Card className="md:col-span-4">
                   <CardHeader className="w-4/5">
@@ -107,7 +111,7 @@ export default function Dashboard() {
                     </CardContent>
                   </Card>
                   {/* Card Component 4 */}
-                  <Card className="w-full md:col-span-3">
+                  <Card className=" w-full md:col-span-3">
                     <CardHeader className="w-4/5">
                       <CardTitle>Recent Sales</CardTitle>
                       <CardDescription>
@@ -122,10 +126,10 @@ export default function Dashboard() {
                 </div>
               </TabsContent>
             </Tabs>
-
-            {/* <DashboardTable/> */}
+            
+              <DashboardTable/>
           </div>
-               
+                
       </DashboardLayout>
 
     </>

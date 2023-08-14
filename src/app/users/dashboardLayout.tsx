@@ -11,7 +11,7 @@ import { UserNav } from "@/components/users/components/user-nav";
 import { ModeToggle } from "@/components/landing/mode-toggle";
 import TeamSwitcher from "@/components/users/components/team-switcher";
 import { Transition } from "@headlessui/react";
-import { ScrollArea } from '@/components/ui/scroll-area'
+import { ScrollArea ,ScrollBar} from '@/components/ui/scroll-area'
 import {
   Sheet,
   SheetTrigger,
@@ -35,12 +35,12 @@ export default function DashboardLayout({ children, isDashboardPage }: RootLayou
   const [isOpen, setIsOpen] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   return (
-    <div className={`${inter.className} flex min-h-screen bg-background text-primary`}>
-      <div className="flex flex-grow">
+    <div className={`${inter.className} flex min-h-screen bg-background  text-primary `}>
+      <div className="flex flex-grow ">
         {isDashboardPage ? (
           <Sidebar className="w-64 hidden md:block" /> // Set the width of the sidebar as needed
         ) : null}
-        <div className="flex-grow">
+        <div className="flex-grow ">
           {/* desktop view */}
           <div className="border-b p-2 hidden md:block">
             <div className="flex h-16 items-center">
@@ -60,7 +60,7 @@ export default function DashboardLayout({ children, isDashboardPage }: RootLayou
           {/* ------------------------Mobile  */}
           <div>
 
-            <div className="flex items-center justify-between p-2 h-17  md:hidden">
+            <div className="flex items-center justify-between  p-2 h-17  md:hidden">
               {/* ====user toggler and menu */}
               <UserNav />
               <div className="flex flex-row gap-4 px-2">
@@ -143,16 +143,24 @@ export default function DashboardLayout({ children, isDashboardPage }: RootLayou
               )}
             </Transition>
           </div>
-
+          <div className="flex flex-row gap-10 pb-2 mt-2 border-b md:border-b-0 ">
           <Sheet >
             <SheetTrigger>
               <button
                 type="button"
-                className="md:hidden bg-gray-900 w-6 h-6 items-center justify-center rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white m-2"
+                className="bg-slate-700 inline-flex items-center justify-center p-2 rounded-md text-gray-200 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white ml-3 md:hidden"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
               >
-                <span className='font-extrabold'>{'...'}</span></button>
+                {/* <span className='font-extrabold'>{'...'}</span> */}
+
+
+
+
+                      {<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-panel-right-open"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="15" x2="15" y1="3" y2="21"/><path d="m10 15-3-3 3-3"/></svg>}
+
+
+                </button>
             </SheetTrigger>
                <SheetContent side={'left'}>
             <ScrollArea className="h-screen">
@@ -160,12 +168,21 @@ export default function DashboardLayout({ children, isDashboardPage }: RootLayou
                   <Sidebar className="w-60 " /> // Set the width of the sidebar as needed
                 ) : null}
             </ScrollArea>
+      
               </SheetContent> 
              </Sheet>
-          <div className="flex flex-row  p-1">
+             <h2 className="text-3xl font-bold tracking-tight  md:mt-5">Dashboard</h2> 
+             </div>
+              <ScrollArea className="h-screen scroll-smooth md:hidden">
+          <div className="flex flex-row  p-1 h-full">
 
             <main className=" md:p-8">{children}</main>
           </div>
+          </ScrollArea>
+          <div className="md:flex flex-row  p-1 h-full hidden">
+
+<main className=" md:p-8">{children}</main>
+</div>
         </div>
 
       </div>
