@@ -1,3 +1,4 @@
+"use client"
 import { Metadata } from "next"
 import Image from "next/image"
 
@@ -10,11 +11,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Overview } from "@/components/users/components/overview"
 import { RecentSales } from "@/components/users/components/recent-sales"
 import { DashboardTable } from "@/components/users/components/dashboardTable"
+import { CustomerMenu } from "@/components/users/components/customers/customerMenu.tsx/page"
 
-export const metadata: Metadata = {
-  title: "PackPushers",
-  description: "Track your packges",
-}
+// export const metadata: Metadata = {
+//   title: "PackPushers",
+//   description: "Track your packges",
+// }
 
 export default function UserDashb() {
   return (
@@ -35,9 +37,12 @@ export default function UserDashb() {
           className="hidden dark:block"
         />
       </div>
-      <div className="hidden md:block">
-        
-        <div className="grid grid-cols-5 gap-4">
+      <div className="hidden md:flex  flex-row">
+        {/* ============================Customer menu */}
+        <div className=' w-64 flex flex-col'>
+            <CustomerMenu />
+        </div>
+        <div className="grid grid-cols-5 gap-4 -500">
 
           {/* Main Content */}
           <div className="col-span-4 p-8 pt-6">
