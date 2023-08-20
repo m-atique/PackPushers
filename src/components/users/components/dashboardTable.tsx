@@ -40,8 +40,6 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-import {ScrollArea,ScrollBar} from '@/components/ui/scroll-area'
-
 const data: Payment[] = [
   {
     id: "m5gr84i9",
@@ -246,6 +244,10 @@ export function DashboardTable() {
   return (
     <div className="grid grid-flow-row col-span-11  p-4">
       <div className="flex items-center py-4 px-2 ">
+=======
+    <div className="w-full">
+      <div className="flex items-center py-4">
+
         <Input
           placeholder="Filter emails..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
@@ -281,10 +283,14 @@ export function DashboardTable() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+
       <ScrollArea className="w-auto " >
        
         
       <div className="rounded-md border w-full">
+=======
+      <div className="rounded-md border">
+
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -334,10 +340,15 @@ export function DashboardTable() {
           </TableBody>
         </Table>
       </div>
+
       <ScrollBar orientation="horizontal" />
         </ScrollArea>
       <div className="flex items-center justify-end space-x-2 py-4 ">
         <div className="flex-1 w-auto text-sm text-muted-foreground">
+
+      <div className="flex items-center justify-end space-x-2 py-4">
+        <div className="flex-1 text-sm text-muted-foreground">
+
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
