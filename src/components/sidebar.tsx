@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Contact, DollarSign, Globe, List, Plus, Settings, ShipIcon, User, UsersIcon } from "lucide-react"
+import { Contact, Container, DollarSign, Globe, List, PanelTopIcon, Plus, Settings, ShipIcon, User, UsersIcon } from "lucide-react"
 import { DashboardIcon } from "@radix-ui/react-icons"
 
 
@@ -81,57 +81,28 @@ export function Sidebar({ className }: SidebarProps) {
             Shipment
           </h2>
           <div className="space-y-1">
+          
+          <Link href="/users/admin/shipment-control-panel" prefetch>
             <Button variant="ghost" className="w-full justify-start">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="mr-2 h-4 w-4"
-              >
-                <path d="M21 15V6" />
-                <path d="M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
-                <path d="M12 12H3" />
-                <path d="M16 6H3" />
-                <path d="M12 18H3" />
-              </svg>
-              Shipping Control Panel
+              <PanelTopIcon className="mr-2 h-4 w-4"/>
+              Shipment Control Panel
             </Button>
+            </Link>
+
+            <Link href="/users/admin/create-shipment" prefetch>
             <Button variant="ghost" className="w-full justify-start">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="mr-2 h-4 w-4"
-              >
-                <circle cx="8" cy="18" r="4" />
-                <path d="M12 18V2l7 4" />
-              </svg>
+              <Plus className="mr-2 h-4 w-4"/>
               Create Shipment
             </Button>
+            </Link>
+
+            <Link href="/users/admin/shipment-lists" prefetch>
             <Button variant="ghost" className="w-full justify-start">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="mr-2 h-4 w-4"
-              >
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
+              <Container className="mr-2 h-4 w-4"/>
               List of Shipment
             </Button>
+            </Link>
+
             <Button variant="ghost" className="w-full justify-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
