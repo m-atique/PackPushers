@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 import { Metadata } from "next"
 import Image from "next/image"
 
@@ -8,122 +8,101 @@ import {
  
 } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import CustomerDashboardLayout from "./customerDashboardLayout"
 import { Overview } from "@/components/users/components/overview"
 import { RecentSales } from "@/components/users/components/recent-sales"
 import { DashboardTable } from "@/components/users/components/dashboardTable"
 import { CustomerMenu } from "@/components/users/components/customers/customerMenu.tsx/page"
 
-// export const metadata: Metadata = {
-//   title: "PackPushers",
-//   description: "Track your packges",
-// }
+export const metadata: Metadata = {
+  title: "PackPushers",
+  description: "Track your packges",
+}
 
 export default function UserDashb() {
   return (
     <>
-      <div className="md:hidden">
-        <Image
-          src="/examples/music-light.png"
-          width={1280}
-          height={1114}
-          alt="Music"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/music-dark.png"
-          width={1280}
-          height={1114}
-          alt="Music"
-          className="hidden dark:block"
-        />
-      </div>
-      <div className="hidden md:flex  flex-row">
-        {/* ============================Customer menu */}
-        <div className=' w-64 flex flex-col'>
-            <CustomerMenu />
-        </div>
-        <div className="grid grid-cols-5 gap-4 -500">
+    <CustomerDashboardLayout isDashboardPage={true}>  
 
-          {/* Main Content */}
-          <div className="col-span-4 p-8 pt-6">
-            <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-            <div className="flex items-center justify-between space-x-2 mb-4">
-              
-             
-            </div>
-          
+          {/* Main Content  flex-1 space-y-4 p-8 pt-6 */}
+                 
+          <div className="col-span-4  pt-6">
+                    
             <Tabs defaultValue="overview" className="space-y-4">
              
               <TabsContent value="overview" className="space-y-4">
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                
+                <div className="grid gap-3 grid-cols-2 md:gap-5  sm:grid-cols-2 md:grid-cols-4 p-6 ">
                   {/* Card Component 1 */}
-                  <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                      <CardTitle className="text-sm font-medium">
+                  <Card className="h-fit sm:h-full">
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
+                      <CardTitle className="text-sm font-medium w-full">
                         Total Revenue
                       </CardTitle>
                       {/* SVG Icon */}
                     </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">$45,231.89</div>
-                      <p className="text-xs text-muted-foreground">
+                    <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
+                      <div className=" text-md  sm:text-2xl font-bold">$45,231.89</div>
+                      <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
                         +20.1% from last month
                       </p>
                     </CardContent>
                   </Card>
                   {/* Card Component 2 */}
-                  <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                      <CardTitle className="text-sm font-medium">
-                        Subscriptions
+                  <Card className="h-fit sm:h-full">
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
+                      <CardTitle className="text-sm font-medium w-full">
+                        Subscriptions 01
                       </CardTitle>
                       {/* SVG Icon */}
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">+2350</div>
-                      <p className="text-xs text-muted-foreground">
-                        +180.1% from last month
+                      </CardHeader>
+                    <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
+                      <div className=" text-md  sm:text-2xl font-bold">+465,70</div>
+                      <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
+                        480.1% from last month
                       </p>
                     </CardContent>
                   </Card>
 
                     {/* Card Component 3 */}
-                    <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                      <CardTitle className="text-sm font-medium">
-                        Subscriptions
+                    <Card className="h-fit sm:h-full">
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
+                      <CardTitle className="text-sm font-medium w-full">
+                        Subscription 2
                       </CardTitle>
                       {/* SVG Icon */}
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">+2350</div>
-                      <p className="text-xs text-muted-foreground">
+                      </CardHeader>
+                    <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
+                      <div className=" text-md  sm:text-2xl font-bold">+45,567</div>
+                      <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
                         +180.1% from last month
                       </p>
                     </CardContent>
                   </Card>
 
                     {/* Card Component 4 */}
-                    <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                      <CardTitle className="text-sm font-medium">
-                        Subscriptions
+                    <Card className="h-fit sm:h-full">
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
+                      <CardTitle className="text-sm font-medium w-full">
+                        Subscription 3
                       </CardTitle>
                       {/* SVG Icon */}
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">+2350</div>
-                      <p className="text-xs text-muted-foreground">
-                        +180.1% from last month
+                      </CardHeader>
+                    <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
+                      <div className=" text-md  sm:text-2xl font-bold">+75,231</div>
+                      <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
+                        +150.1% from last month
                       </p>
                     </CardContent>
                   </Card>
                   {/* More Card Components go here */}
                 </div>
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+
+                {/* =========  Graphs ==========  */}
+                <div className="grid  col-span-1 sm:col-span-4 md:grid-cols-7 lg:col-span-7 gap-2  p-4">
                   {/* Card Component 3 */}
-                  <Card className="col-span-4">
-                    <CardHeader>
+                  <Card className="md:col-span-4">
+                  <CardHeader className="w-4/5">
                       <CardTitle>Package Sale Graph</CardTitle>
                     </CardHeader>
                     <CardContent className="pl-2">
@@ -131,8 +110,8 @@ export default function UserDashb() {
                     </CardContent>
                   </Card>
                   {/* Card Component 4 */}
-                  <Card className="col-span-3">
-                    <CardHeader>
+                  <Card className=" w-full md:col-span-3">
+                    <CardHeader className="w-4/5">
                       <CardTitle>Recent Sales</CardTitle>
                       <CardDescription>
                         You made 265 sales this month.
@@ -146,13 +125,12 @@ export default function UserDashb() {
                 </div>
               </TabsContent>
             </Tabs>
-
-            <DashboardTable/>
+            
+              <DashboardTable/>
           </div>
-          
-        </div>
-       
-      </div>
+                
+      </CustomerDashboardLayout>
+
     </>
   )
 }

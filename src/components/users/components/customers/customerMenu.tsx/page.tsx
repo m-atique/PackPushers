@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Contact, DollarSign, Globe, List, Plus, Settings, ShipIcon, User,BarChart4,PackageOpen, UsersIcon,ListTodo, KeySquare, AtSign, StrikethroughIcon, Sailboat, MapPin, History, Star, Vegan, ListChecks, CheckCheck,CreditCard} from "lucide-react"
+import { Contact, DollarSign, Globe, List, Plus, Settings, ShipIcon, User,BarChart4,PackageOpen, UsersIcon,ListTodo, KeySquare, AtSign, StrikethroughIcon, Sailboat, MapPin, History, Star, Vegan, ListChecks, CheckCheck,CreditCard, LayoutDashboard} from "lucide-react"
 import { DashboardIcon } from "@radix-ui/react-icons"
 import { Card } from "@/components/ui/card"
 
@@ -14,19 +14,19 @@ export function CustomerMenu({ className }: CustomerMenuProps) {
     <div className={cn("pb-12", "w-64", className)}>
       <div className="space-y-4 py-4">
         <div className="px-3 py-2">
-          <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
+          {/* <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
             DashBoard
-          </h2>
+          </h2> */}
           <div className="space-y-1">
 
           <Link href="/users/admin/dashboard" prefetch>
-            <Button variant="secondary" className="w-full justify-start">
-              <PackageOpen className="mr-2 h-4 w-4 mb-1"/>
-              Welcome To Package Pusher
+            <Button variant="secondary" className="w-full  mb-2 justify-start">
+              <LayoutDashboard className="mr-2 h-4 w-4 mb-1"/>
+              Dashboard
             </Button>
           </Link>
 
-          <Link href="/users/admin/shipment" prefetch>
+          {/* <Link href="/users/admin/shipment" prefetch>
             <Button variant="ghost" className="w-full justify-start">
              <BarChart4 className="mr-2 h-4 w-4"/>
               Recent Activities Overview
@@ -44,7 +44,7 @@ export function CustomerMenu({ className }: CustomerMenuProps) {
               <DollarSign  className="mr-2 h-4 w-4"/>
               Account Balance
             </Button>
-            </Link>
+            </Link> */}
           </div>
         </div>
 {/* =====================Profile */}
