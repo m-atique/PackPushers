@@ -1,10 +1,9 @@
 "use client"
 
 import React, { useState } from "react";
-import "../globals.css";
+import "../../globals.css"
 import { Inter } from "next/font/google";
 import { settings } from "@/config/settings";
-import { Sidebar } from "@/components/sidebar";
 import { MainNav } from "@/components/users/components/main-nav";
 import { Search } from "@/components/users/components/search";
 import { UserNav } from "@/components/users/components/user-nav";
@@ -18,6 +17,7 @@ import {
   SheetContent,
 
 } from '@/components/ui/sheet'
+import { CustomerMenu } from "@/components/users/components/customers/customerMenu.tsx/page";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -31,14 +31,14 @@ interface RootLayoutProps {
   isDashboardPage?: boolean;
 }
 
-export default function DashboardLayout({ children, isDashboardPage }: RootLayoutProps) {
+export default function CustomerDashboardLayout({ children, isDashboardPage }: RootLayoutProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className={`${inter.className} flex min-h-screen bg-background  text-primary `}>
       <div className="flex flex-grow ">
         {isDashboardPage ? (
-          <Sidebar className="w-64 hidden md:block" /> // Set the width of the sidebar as needed
+          <CustomerMenu className="w-64 hidden md:block" /> // Set the width of the sidebar as needed
         ) : null}
         <div className="flex-grow ">
           {/* desktop view */}
@@ -165,7 +165,7 @@ export default function DashboardLayout({ children, isDashboardPage }: RootLayou
                <SheetContent side={'left'}>
             <ScrollArea className="h-screen">
                {isDashboardPage ? (
-                  <Sidebar className="w-60 " /> // Set the width of the sidebar as needed
+                  <CustomerMenu className="w-60 " /> // Set the width of the sidebar as needed
                 ) : null}
             </ScrollArea>
       
