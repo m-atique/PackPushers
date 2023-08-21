@@ -73,7 +73,7 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
                   </div>
                 )}
                 {/* mobile menue button */}
-
+{/* this can be used in case to open sub menu for users  */}
                 {/* <button
                   onClick={() => setIsOpen(!isOpen)}
                   type="button"
@@ -119,6 +119,7 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
               </div>
             </div>
             {/* Mobile Menu */}
+{/* this can be used in case of any sub menu for users  */}
             {/* <Transition
               show={isOpen}
               enter="transition ease-out duration-100 transform"
