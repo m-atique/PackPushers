@@ -4,12 +4,8 @@ import React, { useState } from "react";
 import "../../globals.css"
 import { Inter } from "next/font/google";
 import { settings } from "@/config/settings";
-import { MainNav } from "@/components/users/components/main-nav";
-import { Search } from "@/components/users/components/search";
 import { UserNav } from "@/components/users/components/user-nav";
 import { ModeToggle } from "@/components/landing/mode-toggle";
-import TeamSwitcher from "@/components/users/components/team-switcher";
-import { Transition } from "@headlessui/react";
 import { ScrollArea ,ScrollBar} from '@/components/ui/scroll-area'
 import {
   Sheet,
@@ -153,19 +149,14 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
                 aria-expanded="false"
               >
                 {/* <span className='font-extrabold'>{'...'}</span> */}
-
-
-
-
-                      {<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-panel-right-open"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="15" x2="15" y1="3" y2="21"/><path d="m10 15-3-3 3-3"/></svg>}
-
+                    {<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-panel-right-open"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="15" x2="15" y1="3" y2="21"/><path d="m10 15-3-3 3-3"/></svg>}
 
                 </button>
             </SheetTrigger>
                <SheetContent side={'left'}>
             <ScrollArea className="h-screen">
                {isDashboardPage ? (
-                  <CustomerMenu className="w-60 " /> // Set the width of the sidebar as needed
+                  <CustomerMenu className="w-72 " /> // Set the width of the sidebar as needed
                 ) : null}
             </ScrollArea>
       
