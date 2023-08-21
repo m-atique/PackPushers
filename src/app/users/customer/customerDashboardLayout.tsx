@@ -4,12 +4,8 @@ import React, { useState } from "react";
 import "../../globals.css"
 import { Inter } from "next/font/google";
 import { settings } from "@/config/settings";
-import { MainNav } from "@/components/users/components/main-nav";
-import { Search } from "@/components/users/components/search";
 import { UserNav } from "@/components/users/components/user-nav";
 import { ModeToggle } from "@/components/landing/mode-toggle";
-import TeamSwitcher from "@/components/users/components/team-switcher";
-import { Transition } from "@headlessui/react";
 import { ScrollArea ,ScrollBar} from '@/components/ui/scroll-area'
 import {
   Sheet,
@@ -33,21 +29,24 @@ interface RootLayoutProps {
 
 export default function CustomerDashboardLayout({ children, isDashboardPage }: RootLayoutProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState('Customer');
 
   return (
     <div className={`${inter.className} flex min-h-screen bg-background  text-primary `}>
       <div className="flex flex-grow ">
         {isDashboardPage ? (
-          <CustomerMenu className="w-64 hidden md:block" /> // Set the width of the sidebar as needed
+          <CustomerMenu className="w-80 hidden md:block" /> // Set the width of the sidebar as needed
         ) : null}
         <div className="flex-grow ">
           {/* desktop view */}
           <div className="border-b p-2 hidden md:block">
             <div className="flex h-16 items-center">
-              <TeamSwitcher />
-              <MainNav className="mx-6" />
-              <div className="ml-auto flex items-center space-x-4">
-                <Search />
+             
+            <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
+           Hello <span className="pl-2">{currentUser}</span>
+          </h2>
+              <div className="ml-auto flex items-center space-x-4 px-2">
+              
                 <UserNav />
               </div>
               {settings.themeToggleEnabled && (
@@ -70,8 +69,8 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
                   </div>
                 )}
                 {/* mobile menue button */}
-
-                <button
+{/* this can be used in case to open sub menu for users  */}
+                {/* <button
                   onClick={() => setIsOpen(!isOpen)}
                   type="button"
                   className="bg-gray-600 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -112,11 +111,12 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
                       />
                     </svg>
                   )}
-                </button>
+                </button> */}
               </div>
             </div>
             {/* Mobile Menu */}
-            <Transition
+{/* this can be used in case of any sub menu for users  */}
+            {/* <Transition
               show={isOpen}
               enter="transition ease-out duration-100 transform"
               enterFrom="opacity-0 scale-95"
@@ -128,11 +128,7 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
               {() => (
                 <div className="md:hidden border-b-2" id="mobile-menu">
                   <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <Search />
-                    <TeamSwitcher />
-                    <MainNav className="flex flex-col gap-2 justify-start items-start" />
-
-                    {settings.themeToggleEnabled && (
+                      {settings.themeToggleEnabled && (
                       <div className="hidden md:block">
                         <ModeToggle />
                       </div>
@@ -141,7 +137,7 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
                   </div>
                 </div>
               )}
-            </Transition>
+            </Transition> */}
           </div>
           <div className="flex flex-row gap-10 pb-2 mt-2 border-b md:border-b-0 ">
           <Sheet >
@@ -153,19 +149,14 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
                 aria-expanded="false"
               >
                 {/* <span className='font-extrabold'>{'...'}</span> */}
-
-
-
-
-                      {<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-panel-right-open"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="15" x2="15" y1="3" y2="21"/><path d="m10 15-3-3 3-3"/></svg>}
-
+                    {<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-panel-right-open"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="15" x2="15" y1="3" y2="21"/><path d="m10 15-3-3 3-3"/></svg>}
 
                 </button>
             </SheetTrigger>
                <SheetContent side={'left'}>
             <ScrollArea className="h-screen">
                {isDashboardPage ? (
-                  <CustomerMenu className="w-60 " /> // Set the width of the sidebar as needed
+                  <CustomerMenu className="w-72 " /> // Set the width of the sidebar as needed
                 ) : null}
             </ScrollArea>
       
