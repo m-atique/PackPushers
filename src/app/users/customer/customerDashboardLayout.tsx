@@ -33,6 +33,7 @@ interface RootLayoutProps {
 
 export default function CustomerDashboardLayout({ children, isDashboardPage }: RootLayoutProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState('Customer');
 
   return (
     <div className={`${inter.className} flex min-h-screen bg-background  text-primary `}>
@@ -44,10 +45,12 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
           {/* desktop view */}
           <div className="border-b p-2 hidden md:block">
             <div className="flex h-16 items-center">
-              <TeamSwitcher />
-              <MainNav className="mx-6" />
-              <div className="ml-auto flex items-center space-x-4">
-                <Search />
+             
+            <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
+           Hello <span className="pl-2">{currentUser}</span>
+          </h2>
+              <div className="ml-auto flex items-center space-x-4 px-2">
+              
                 <UserNav />
               </div>
               {settings.themeToggleEnabled && (
@@ -71,7 +74,7 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
                 )}
                 {/* mobile menue button */}
 
-                <button
+                {/* <button
                   onClick={() => setIsOpen(!isOpen)}
                   type="button"
                   className="bg-gray-600 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -112,11 +115,11 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
                       />
                     </svg>
                   )}
-                </button>
+                </button> */}
               </div>
             </div>
             {/* Mobile Menu */}
-            <Transition
+            {/* <Transition
               show={isOpen}
               enter="transition ease-out duration-100 transform"
               enterFrom="opacity-0 scale-95"
@@ -128,11 +131,7 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
               {() => (
                 <div className="md:hidden border-b-2" id="mobile-menu">
                   <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <Search />
-                    <TeamSwitcher />
-                    <MainNav className="flex flex-col gap-2 justify-start items-start" />
-
-                    {settings.themeToggleEnabled && (
+                      {settings.themeToggleEnabled && (
                       <div className="hidden md:block">
                         <ModeToggle />
                       </div>
@@ -141,7 +140,7 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
                   </div>
                 </div>
               )}
-            </Transition>
+            </Transition> */}
           </div>
           <div className="flex flex-row gap-10 pb-2 mt-2 border-b md:border-b-0 ">
           <Sheet >
