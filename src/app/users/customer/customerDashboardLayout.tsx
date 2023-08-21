@@ -33,21 +33,21 @@ interface RootLayoutProps {
 
 export default function CustomerDashboardLayout({ children, isDashboardPage }: RootLayoutProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentUser, setCurrentUser] = useState('Customer');
 
   return (
     <div className={`${inter.className} flex min-h-screen bg-background  text-primary `}>
       <div className="flex flex-grow ">
         {isDashboardPage ? (
-          <CustomerMenu className="w-100 hidden md:block" /> // Set the width of the sidebar as needed
+          <CustomerMenu className="w-80 hidden md:block" /> // Set the width of the sidebar as needed
         ) : null}
         <div className="flex-grow ">
           {/* desktop view */}
           <div className="border-b p-2 hidden md:block">
             <div className="flex h-16 items-center">
-              
-             <h2>hello <span>{currentUser}</span></h2>
+              <TeamSwitcher />
+              <MainNav className="mx-6" />
               <div className="ml-auto flex items-center space-x-4">
+                <Search />
                 <UserNav />
               </div>
               {settings.themeToggleEnabled && (
@@ -165,7 +165,7 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
                <SheetContent side={'left'}>
             <ScrollArea className="h-screen">
                {isDashboardPage ? (
-                  <CustomerMenu className="w-2/5 " /> // Set the width of the sidebar as needed
+                  <CustomerMenu className="w-60 " /> // Set the width of the sidebar as needed
                 ) : null}
             </ScrollArea>
       
