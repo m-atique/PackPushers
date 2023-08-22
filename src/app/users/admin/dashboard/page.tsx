@@ -1,4 +1,5 @@
-
+"use client"
+import React,{useState,useEffect} from "react"
 import { Metadata } from "next"
 import Image from "next/image"
 import {
@@ -12,16 +13,33 @@ import { Overview } from "@/components/users/components/overview"
 import { RecentSales } from "@/components/users/components/recent-sales"
 import { DashboardTable } from "@/components/users/components/dashboardTable"
 import { ScrollBar,ScrollArea } from "@/components/ui/scroll-area"
-// import * as ScrollArea from '@radix-ui/react-scroll-area';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
 
-export const metadata: Metadata = {
-  title: "PackPushers",
-  description: "Track your packges",
-}
+
+// export const metadata: Metadata = {
+//   title: "PackPushers",
+//   description: "Track your packges",
+// }
 
 export default function Dashboard() {
+  const cookies = new Cookies();
 
-  
+  const [dasboard, setdasboard] = useState({
+    ts: 0,
+    tsc: 0,
+    rs: []
+  });
+
+  useEffect(() => {
+    const token = (cookies.get('usertoken') == undefined) ? 'no' : cookies.get('usertoken');
+    axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/dashboard`,{token:token }).then((res) => {
+     // setdasboard(res.data.data);
+      });
+
+ }, []);
+
+
   return (
      
   <>
@@ -40,14 +58,16 @@ export default function Dashboard() {
                   <Card className="h-fit sm:h-full">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
                       <CardTitle className="text-sm font-medium w-full">
-                        Total Revenue
+                      Total Shipments
                       </CardTitle>
                       {/* SVG Icon */}
                     </CardHeader>
                     <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
-                      <div className=" text-md  sm:text-2xl font-bold">$45,231.89</div>
+                      <div className=" text-md  sm:text-2xl font-bold">
+                      {dasboard.ts}
+                      </div>
                       <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
-                        +20.1% from last month
+                       
                       </p>
                     </CardContent>
                   </Card>
@@ -55,14 +75,16 @@ export default function Dashboard() {
                   <Card className="h-fit sm:h-full">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
                       <CardTitle className="text-sm font-medium w-full">
-                        Subscriptions 01
+                      Total Shipments Cost
                       </CardTitle>
                       {/* SVG Icon */}
                       </CardHeader>
                     <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
-                      <div className=" text-md  sm:text-2xl font-bold">+465,70</div>
+                      <div className=" text-md  sm:text-2xl font-bold">
+                      {dasboard.tsc}
+                      </div>
                       <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
-                        480.1% from last month
+                       
                       </p>
                     </CardContent>
                   </Card>
@@ -71,14 +93,16 @@ export default function Dashboard() {
                     <Card className="h-fit sm:h-full">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
                       <CardTitle className="text-sm font-medium w-full">
-                        Subscription 2
+                      Completed Shipments
                       </CardTitle>
                       {/* SVG Icon */}
                       </CardHeader>
                     <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
-                      <div className=" text-md  sm:text-2xl font-bold">+45,567</div>
+                      <div className=" text-md  sm:text-2xl font-bold">
+                        0
+                      </div>
                       <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
-                        +180.1% from last month
+                        
                       </p>
                     </CardContent>
                   </Card>
@@ -87,14 +111,14 @@ export default function Dashboard() {
                     <Card className="h-fit sm:h-full">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
                       <CardTitle className="text-sm font-medium w-full">
-                        Subscription 3
+                      Wallet
                       </CardTitle>
                       {/* SVG Icon */}
                       </CardHeader>
                     <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
-                      <div className=" text-md  sm:text-2xl font-bold">+75,231</div>
+                      <div className=" text-md  sm:text-2xl font-bold">0</div>
                       <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
-                        +150.1% from last month
+                       
                       </p>
                     </CardContent>
                   </Card>
@@ -117,11 +141,11 @@ export default function Dashboard() {
                     <CardHeader className="w-4/5">
                       <CardTitle>Recent Sales</CardTitle>
                       <CardDescription>
-                        You made 265 sales this month.
+                       
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <RecentSales />
+                    <RecentSales dasboard={dasboard} />
                     </CardContent>
                   </Card>
                   {/* More Card Components go here */}
