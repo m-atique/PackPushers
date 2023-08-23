@@ -1,6 +1,7 @@
-// "use client"
+"use client"
 import { Metadata } from "next"
 import Image from "next/image"
+import React,{useEffect,useState} from "react"
 
 import {
   Tabs,
@@ -8,16 +9,34 @@ import {
  
 } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import CustomerDashboardLayout from "./customerDashboardLayout"
+import CustomerDashboardLayout from "../customerDashboardLayout"
 import { PendingDeliveryTable } from "@/components/users/components/customers/pendingDeliveryTable"
 import { PaymentsTable } from "@/components/users/components/customers/paymentsTable"
 
-export const metadata: Metadata = {
-  title: "PackPushers",
-  description: "Track your packges",
-}
+// export const metadata: Metadata = {
+//   title: "PackPushers",
+//   description: "Track your packges",
+// }
+import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 export default function UserDashb() {
+  const cookies = new Cookies();
+
+  const [dasboard, setdasboard] = useState({
+    ts: 0,
+    tsc: 0,
+    rs: []
+  });
+
+  useEffect(() => {
+     const token = (cookies.get('usertoken') == undefined) ? 'no' : cookies.get('usertoken');
+     axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/dashboard`,{token:token }).then((res) => {
+      // setdasboard(res.data.data);
+       });
+
+  }, []);
+
   return (
     <>
     <CustomerDashboardLayout isDashboardPage={true}>  
@@ -52,14 +71,14 @@ export default function UserDashb() {
                   <Card className="h-fit sm:h-full">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
                       <CardTitle className="text-sm font-medium w-full">
-                        Recent Orders
+                        Total Shipment
                       </CardTitle>
                       {/* SVG Icon */}
                     </CardHeader>
                     <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
-                      <div className=" text-md  sm:text-2xl font-bold">1432</div>
+                      <div className=" text-md  sm:text-2xl font-bold">{dasboard.ts}</div>
                       <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
-                        Latest at 05:45 pm today
+                       
                       </p>
                     </CardContent>
                   </Card>
@@ -67,14 +86,14 @@ export default function UserDashb() {
                   <Card className="h-fit sm:h-full">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
                       <CardTitle className="text-sm font-medium w-full">
-                       Pending Deliveries
+                      Total Shipments Cost
                       </CardTitle>
                       {/* SVG Icon */}
                       </CardHeader>
                     <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
-                      <div className=" text-md  sm:text-2xl font-bold">12</div>
+                      <div className=" text-md  sm:text-2xl font-bold">{dasboard.tsc}</div>
                       <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
-                        Deadline 31 August 2023
+                        
                       </p>
                     </CardContent>
                   </Card>
@@ -83,14 +102,14 @@ export default function UserDashb() {
                     <Card className="h-fit sm:h-full hidden sm:block">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
                       <CardTitle className="text-sm font-medium w-full">
-                        Recent payment
+                       Wallet
                       </CardTitle>
                       {/* SVG Icon */}
                       </CardHeader>
                     <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
-                      <div className=" text-md  sm:text-2xl font-bold">$1435/2000</div>
+                      <div className=" text-md  sm:text-2xl font-bold">$1435</div>
                       <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
-                       pending Amount $565
+                      
                       </p>
                     </CardContent>
                   </Card>                 

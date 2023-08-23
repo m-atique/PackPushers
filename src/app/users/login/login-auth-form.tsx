@@ -29,8 +29,11 @@ export function LoginAuthForm({ className, ...props }: UserAuthFormProps) {
 
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/login`, formData);
+
+      console.log(formData)
       cookies.set('usertoken', response.data.token, { path: '/' });
-      window.location.href ='/users/dashboard'
+      console.log(response)
+      window.location.href ='/users/dashboard'  //--- this have to be changes according o condition on role 
     
     } catch (error:any) {
       if (typeof error.response != 'undefined') {
