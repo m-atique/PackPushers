@@ -14,6 +14,7 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [Message, setMessage] = React.useState<boolean>(false)
   const [formData, setFormData] = React.useState({
     fullName: '',
     email: '',
@@ -24,14 +25,15 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
     setIsLoading(true);
-
+    setMessage(false)
     setTimeout(() => {
       setIsLoading(false)
     }, 3000)
 
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/signup`, formData);
-      console.log(response.data); // Handle the response as needed
+      // Handle the response as needed
+      window.location.href = '/users/login'
     } catch (error) {
       console.error(error);
     }
@@ -40,17 +42,38 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+    const name = event.target.id;
+    const value = event.target.value;
+   
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={onSubmit}>
         <div className="grid gap-2">
+        <div className="grid gap-1">
+          {Message && (
+              <div style={{color: 'darkgreen'}} className="alert alert-info" >{Message}</div>
+            )}
+            <Label className="sr-only" htmlFor="name">
+              Type
+            </Label>
+            <select id="role" onChange={handleInputChange} disabled={isLoading} style={{padding: '9px',border: '1px solid #575454',borderRadius: '6px'}} >
+              <option value="user" >User</option>
+              <option value="agent" >Package Forwarder</option>
+            </select>
+            
+          </div>
+
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="name">
               Name

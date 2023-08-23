@@ -15,7 +15,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export function UserNav() {
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+
+export function UserNav({UserData={}}: RootLayoutProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -52,7 +55,7 @@ export function UserNav() {
           <DropdownMenuItem>New Team</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={()=>{ cookies.set('usertoken', 'no', { path: '/' }); window.location.href ='/users/dashboard' }} >
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>

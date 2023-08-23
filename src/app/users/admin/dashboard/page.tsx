@@ -25,7 +25,9 @@ import Cookies from 'universal-cookie';
 export default function Dashboard() {
   const cookies = new Cookies();
 
-  const [dasboard, setdasboard] = useState({
+  const [dasboard, setdasboard] = React.useState({
+    user: 0,
+    agent: 0,
     ts: 0,
     tsc: 0,
     rs: []
@@ -33,8 +35,10 @@ export default function Dashboard() {
 
   useEffect(() => {
     const token = (cookies.get('usertoken') == undefined) ? 'no' : cookies.get('usertoken');
-    axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/dashboard`,{token:token }).then((res) => {
-     // setdasboard(res.data.data);
+    axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/admin/dashboard`,{token:token }).then((res) => {
+     
+     setdasboard(res.data.data);
+    
       });
 
  }, []);
@@ -93,13 +97,13 @@ export default function Dashboard() {
                     <Card className="h-fit sm:h-full">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
                       <CardTitle className="text-sm font-medium w-full">
-                      Completed Shipments
+                      Total Users
                       </CardTitle>
                       {/* SVG Icon */}
                       </CardHeader>
                     <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
                       <div className=" text-md  sm:text-2xl font-bold">
-                        0
+                        {dasboard.user}
                       </div>
                       <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
                         
@@ -111,12 +115,14 @@ export default function Dashboard() {
                     <Card className="h-fit sm:h-full">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:p-5  p-2">
                       <CardTitle className="text-sm font-medium w-full">
-                      Wallet
+                     Total Agents
                       </CardTitle>
                       {/* SVG Icon */}
                       </CardHeader>
                     <CardContent className="sm:pt-0 sm:px-5p-1  w-full">
-                      <div className=" text-md  sm:text-2xl font-bold">0</div>
+                      <div className=" text-md  sm:text-2xl font-bold">
+                        {dasboard.agent}
+                        </div>
                       <p className="sm:text-xs text-[9px] text-muted-foreground w-full">
                        
                       </p>

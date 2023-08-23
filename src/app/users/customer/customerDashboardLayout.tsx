@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "../../globals.css"
 import { Inter } from "next/font/google";
 import { settings } from "@/config/settings";
@@ -14,6 +14,9 @@ import {
 
 } from '@/components/ui/sheet'
 import { CustomerMenu } from "@/components/users/components/customers/customerMenu.tsx/page";
+
+import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -31,11 +34,42 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
   const [isOpen, setIsOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState('Customer');
 
+const cookies = new Cookies();
+
+const [IsUser, setIsUser] = React.useState<boolean>(false)
+const [UserData, setUserData] = React.useState<boolean>({})
+
+useEffect(() => {
+  const token = (cookies.get('usertoken') == undefined) ? 'no' : cookies.get('usertoken');
+    axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/verify`,{token:token }).then((res) => {
+      setIsUser(res.data.user);
+      if (!res.data.user){ 
+        window.location.href ='/users/login';
+      }
+       });
+
+    axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/getuser`,{token:token }).then((res) => {
+      if (res.data.user.role == 'agent') {
+        window.location.href = '/agent/dashboard'
+      }
+      if (res.data.user.role == 'admin') {
+        window.location.href = '/admin/dashboard'
+      }
+      setUserData(res.data.user);
+
+       });
+      if (cookies.get('usertoken') == undefined) {
+         setIsUser(false)
+      }
+  }, []);
+
+ 
+
   return (
     <div className={`${inter.className} flex min-h-screen bg-background  text-primary `}>
       <div className="flex flex-grow ">
         {isDashboardPage ? (
-          <CustomerMenu className="w-80 hidden md:block" /> // Set the width of the sidebar as needed
+          <CustomerMenu className="w-80 hidden md:block" UserData={UserData} /> // Set the width of the sidebar as needed
         ) : null}
         <div className="flex-grow ">
           {/* desktop view */}
@@ -47,7 +81,7 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
           </h2>
               <div className="ml-auto flex items-center space-x-4 px-2">
               
-                <UserNav />
+                <UserNav UserData={UserData}/>
               </div>
               {settings.themeToggleEnabled && (
                 <div className="hidden md:block">
@@ -61,7 +95,7 @@ export default function CustomerDashboardLayout({ children, isDashboardPage }: R
 
             <div className="flex items-center justify-between  p-2 h-17  md:hidden">
               {/* ====user toggler and menu */}
-              <UserNav />
+              <UserNav UserData={UserData}/>
               <div className="flex flex-row gap-4 px-2">
                 {settings.themeToggleEnabled && (
                   <div className="">
